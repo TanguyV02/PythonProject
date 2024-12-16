@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 def generate_signal(freq=5, sampling_rate=100, duration=1):
     """
     Generate a sine wave signal.
-    
+
     Parameters:
     freq (float): Frequency of the sine wave in Hz.
     sampling_rate (int): Number of samples per second.
@@ -22,11 +22,11 @@ def generate_signal(freq=5, sampling_rate=100, duration=1):
 def add_noise(signal, noise_level=0.2):
     """
     Add random noise to a signal.
-    
+
     Parameters:
     signal (array): Input signal.
     noise_level (float): Standard deviation of the Gaussian noise.
-    
+
     Returns:
     array: Noisy signal.
     """
@@ -38,11 +38,11 @@ def add_noise(signal, noise_level=0.2):
 def compute_fourier_transform(signal, sampling_rate):
     """
     Compute the Fast Fourier Transform (FFT) of a signal.
-    
+
     Parameters:
     signal (array): Input signal.
     sampling_rate (int): Sampling rate of the signal in Hz.
-    
+
     Returns:
     tuple: Frequencies and their corresponding magnitudes.
     """
@@ -55,7 +55,7 @@ def compute_fourier_transform(signal, sampling_rate):
 def plot_results(t, signal, fft_freq, fft_magnitude):
     """
     Plot the original signal and its Fourier Transform.
-    
+
     Parameters:
     t (array): Time vector.
     signal (array): Original signal.
@@ -63,21 +63,21 @@ def plot_results(t, signal, fft_freq, fft_magnitude):
     fft_magnitude (array): Magnitude of FFT.
     """
     plt.figure(figsize=(12, 6))
-    
+
     # Plot the time-domain signal
     plt.subplot(2, 1, 1)
     plt.plot(t, signal)
     plt.title("Time-Domain Signal")
     plt.xlabel("Time (s)")
     plt.ylabel("Amplitude")
-    
+
     # Plot the frequency-domain signal
     plt.subplot(2, 1, 2)
     plt.plot(fft_freq[:len(fft_freq)//2], fft_magnitude[:len(fft_magnitude)//2])  # Only positive frequencies
     plt.title("Frequency-Domain Signal (Fourier Transform)")
     plt.xlabel("Frequency (Hz)")
     plt.ylabel("Magnitude")
-    
+
     plt.tight_layout()
     plt.show()
 
@@ -92,13 +92,13 @@ def main():
     sampling_rate = 100  # Samples per second
     duration = 2  # Signal duration in seconds
     t, clean_signal = generate_signal(freq, sampling_rate, duration)
-    
+
     # Step 2: Add noise to the signal
     noisy_signal = add_noise(clean_signal, noise_level=0.3)
-    
+
     # Step 3: Compute the Fourier Transform
     fft_freq, fft_magnitude = compute_fourier_transform(noisy_signal, sampling_rate)
-    
+
     # Step 4: Plot the results
     plot_results(t, noisy_signal, fft_freq, fft_magnitude)
 
