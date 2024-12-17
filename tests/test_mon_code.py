@@ -2,6 +2,8 @@ import unittest
 import numpy as np
 from src.mon_code import generate_signal, add_noise, compute_fourier_transform
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
 class TestMonCode(unittest.TestCase):
     def test_generate_signal(self):
         """Test la génération d'un signal sinusoïdal."""
